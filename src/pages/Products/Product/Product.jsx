@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./Product.module.css";
 import { useLocation } from "react-router-dom";
 import { getProduct } from "../../../services/products";
@@ -33,7 +33,7 @@ const Product = () => {
   };
   console.log(data);
 
-  async function getBook() {
+  /*   async function getBook() {
     const response = await getProduct(pathname);
     if (response.status === "success") {
       setData(response.data[0]);
@@ -44,7 +44,18 @@ const Product = () => {
 
   useEffect(() => {
     getBook();
-  }, []);
+  }, []); */
+  const getBook = useCallback(async () => {
+    const response = await getProduct(pathname);
+    if (response.status === "success") {
+      setData(response.data[0]);
+      setReview(response.data[0].review);
+      setLoading(false);
+    }
+  }, [pathname]);
+  useEffect(() => {
+    getBook();
+  }, [getBook]);
 
   return (
     <main>
