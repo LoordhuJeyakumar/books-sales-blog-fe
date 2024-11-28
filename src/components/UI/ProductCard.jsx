@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import BasketLoading from "../../Loading/BasketLoading";
 import { getUser } from "../../store/userSlice";
 
+const API_BASE_URL = process.env.REACT_APP_URL || "http://localhost:3333";
 const ProductCard = ({
   title,
   description,
@@ -45,7 +46,7 @@ const ProductCard = ({
     <Link to={`${slug}`} className={styles.container}>
       <div className={styles.image}>
         <img
-          src={imageUrl}
+          src={`${API_BASE_URL}api/v1/products/image/${image}`}
           alt={title}
           onError={() => console.error("Image failed to load:", imageUrl)}
         />

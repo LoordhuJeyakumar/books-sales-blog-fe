@@ -22,6 +22,8 @@ const Product = () => {
   const [loading, setLoading] = useState(true);
   const [click, setClick] = useState(false);
 
+  const API_BASE_URL = process.env.REACT_APP_URL || "http://localhost:3333";
+
   const addToCard = async (e) => {
     e.preventDefault();
     const addCard = await dispatch(updateUserBasket(data));
@@ -74,7 +76,10 @@ const Product = () => {
         ) : (
           <div className={styles.product}>
             <div className={styles.left}>
-              <img src={data.imageUrl} alt={data.title} />
+              <img
+                src={`${API_BASE_URL}api/v1/products/image/${data.image}`}
+                alt={data.title}
+              />
             </div>
             <div className={styles.right}>
               <h2 className={styles.rightTitle}>{data.title}</h2>
