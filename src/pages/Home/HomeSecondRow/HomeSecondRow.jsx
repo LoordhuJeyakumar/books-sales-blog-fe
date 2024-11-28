@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./HomeSecondRow.module.css";
 import image from "../../../images/firstBook.png";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +12,7 @@ import GalacticGatewaybookcover from "../../../images/GalacticGatewaybookcover.p
 
 const HomeSecondRow = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState([
+  const data = [
     {
       title: "Atomic's One",
       description:
@@ -70,7 +69,7 @@ const HomeSecondRow = () => {
       pages: "560",
       image: GalacticGatewaybookcover,
     },
-  ]);
+  ];
 
   return (
     <section className={styles.container}>

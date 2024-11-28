@@ -1,14 +1,14 @@
 import { useMemo, useState } from "react";
 import styles from "./Products.module.css";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import { BsFilterRight } from "react-icons/bs";
 
 import ProductContainer from "./ProductContainer";
 import ProductPagination from "./ProductPagination";
-import { getProductsStatus } from "../../store/productSlice";
+//import { getProductsStatus } from "../../store/productSlice";
 import FilterPopup from "./FilterPopup/FilterPopup";
 const Products = () => {
-  const productsStatus = useSelector(getProductsStatus);
+ // const productsStatus = useSelector(getProductsStatus);
   const [popup, setPopup] = useState(false);
   const [animation, setAnimation] = useState(false);
 

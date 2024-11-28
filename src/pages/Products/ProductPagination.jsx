@@ -1,22 +1,19 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLocation, useSearchParams } from "react-router-dom";
-import { allProducts, getProductsStatus } from "../../store/productSlice";
+import { allProducts } from "../../store/productSlice";
 import styles from "./Products.module.css";
 const ProductPagination = () => {
   const { search } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const productsStatus = useSelector(getProductsStatus);
+  //const productsStatus = useSelector(getProductsStatus);
   const dispatch = useDispatch();
   const [count, setCount] = useState();
   const [results, setResults] = useState();
   const [currentPage, setCurrentPage] = useState(1);
 
-  
-
   useEffect(() => {
-    const params = new URLSearchParams(search);
-    const page = params.get("page");
+    const page = searchParams.get("page");
     if (page) {
       setCurrentPage(page);
     }
@@ -25,7 +22,7 @@ const ProductPagination = () => {
       setResults(res.payload.results);
       setCount(res.payload.count);
     });
-  }, [search, dispatch, currentPage]);
+  }, [search, dispatch, currentPage, searchParams]);
 
   return (
     <>

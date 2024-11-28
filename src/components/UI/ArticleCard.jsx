@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import formatDate from "../../utils/dateFormatter";
 import styles from "./ArticleCard.module.css";
-import parse from "html-react-parser";
 const ArticleCard = ({ createdAt, description, image, title, user, _id }) => {
   const API_BASE_URL = process.env.REACT_APP_URL || "http://localhost:3333";
 
